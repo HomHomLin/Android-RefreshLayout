@@ -2,8 +2,6 @@ package lib.homhomlib.design.refresh;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 

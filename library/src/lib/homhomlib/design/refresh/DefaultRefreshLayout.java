@@ -57,7 +57,7 @@ public class DefaultRefreshLayout extends RefreshLayout{
         super.onSlidingOffset(view, delta);
         float changeOffset = delta / getRefreshDistance();
         mViewRefreshIcon.setAlpha(changeOffset);
-        if(changeOffset == 1){
+        if(changeOffset >= 1){
             mTextView.setText("松开刷新");
         }else{
             mTextView.setText("用力拉呀");

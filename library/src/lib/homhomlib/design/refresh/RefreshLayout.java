@@ -13,7 +13,7 @@ import lib.homhomlib.design.SlidingLayout;
 public class RefreshLayout extends SlidingLayout implements SlidingLayout.SlidingListener,View.OnTouchListener{
     private OnRefreshListener mOnRefreshListener;
 
-    private int mRefreshDistance = 150;//default
+    private int mRefreshDistance = 250;//default
 
     private boolean mIsRefreshing = false;
 
