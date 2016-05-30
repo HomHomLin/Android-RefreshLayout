@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Library</string>
+    <string name="release_refresh">松开刷新</string>
+    <string name="pull_harder">用力拉呀</string>
+    <string name="loading">加载中</string>
+    <string name="finish">完成</string>
 </resources>

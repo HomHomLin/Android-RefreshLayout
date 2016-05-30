@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
+import com.nineoldandroids.view.ViewHelper;
+
 /**
  * Created by Linhh on 16/5/25.
  */
@@ -51,7 +53,7 @@ public class DefaultRefreshLayout extends RefreshLayout implements RefreshLayout
         super.setRefreshing(refresh);
         if(!refresh){
             mViewRefreshIcon.stop();
-            mTextView.setText("完成");
+            mTextView.setText(getContext().getString(R.string.finish));
         }
     }
 
@@ -59,18 +61,22 @@ public class DefaultRefreshLayout extends RefreshLayout implements RefreshLayout
     public void onSlidingOffset(View view, float delta) {
         super.onSlidingOffset(view, delta);
         float changeOffset = delta / getRefreshDistance();
-        mViewRefreshIcon.setAlpha(changeOffset);
-        if(changeOffset >= 1){
-            mTextView.setText("松开刷新");
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+            mViewRefreshIcon.setAlpha(changeOffset);
         }else{
-            mTextView.setText("用力拉呀");
+            ViewHelper.setAlpha(view,changeOffset);
+        }
+        if(changeOffset >= 1){
+            mTextView.setText(getContext().getString(R.string.release_refresh));
+        }else{
+            mTextView.setText(getContext().getString(R.string.pull_harder));
         }
     }
 
     @Override
     public void onRefresh() {
         mViewRefreshIcon.start();
-        mTextView.setText("loading");
+        mTextView.setText(getContext().getString(R.string.loading));
         if(mOnRefreshListener != null){
             mOnRefreshListener.onRefresh();
         }
