@@ -13,9 +13,12 @@ import lib.homhomlib.design.SlidingLayout;
 public class RefreshLayout extends SlidingLayout implements SlidingLayout.SlidingListener,View.OnTouchListener{
     private OnRefreshListener mOnRefreshListener;
 
-    private int mRefreshDistance = 250;//default
-
     private boolean mIsRefreshing = false;
+
+    private int mRefreshDistance = 200;//default
+
+    private int mPauseTime = 200;//滑动到刷新距离的时间间隔
+    private int mResetTime = 200;//恢复到初始状态的时间间隔
 
     private SlidingListener mDelegateSlidingListener;
     private OnTouchListener mDelegateTouchListener;
@@ -38,22 +41,18 @@ public class RefreshLayout extends SlidingLayout implements SlidingLayout.Slidin
     }
 
     private void init(){
-        super.setSlidingDistance(mRefreshDistance);
+        //只开启下拉模式
         super.setSlidingMode(SLIDING_MODE_TOP);
+        //设置滑动监听
         super.setSlidingListener(this);
+        //设置触摸监听
         super.setOnTouchListener(this);
     }
 
     @Deprecated
     @Override
-    public void setSlidingDistance(int distance) {
-        //don't use
-    }
-
-    @Deprecated
-    @Override
     public void setSlidingMode(int mode) {
-
+        //禁用滑动设置
     }
 
     @Override
@@ -72,28 +71,36 @@ public class RefreshLayout extends SlidingLayout implements SlidingLayout.Slidin
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        //如果正在刷新就不拦截
         if(mIsRefreshing){
             return false;
         }
         return super.onInterceptTouchEvent(ev);
     }
 
-    protected void doRefresh(){
-        mOnRefreshListener.onRefresh();
-        mIsRefreshing = true;
+    /**
+     * 是否正在刷新
+     * @return 刷新状态
+     */
+    public boolean isRefreshing(){
+        return this.mIsRefreshing;
     }
 
+    /**
+     * 设置刷新状态，false为停止刷新
+     * @param refresh
+     */
     public void setRefreshing(boolean refresh){
+        mIsRefreshing = refresh;
         if(refresh){
+            getInstrument().smoothTo(getTargetView(), mRefreshDistance, mPauseTime);
             //刷新
             if(mOnRefreshListener != null){
-                getInstrument().smoothTo(getTargetView(),mRefreshDistance,200);
-                doRefresh();
+                mOnRefreshListener.onRefresh();
             }
         }else{
             //停止
-            getInstrument().reset(getTargetView(),200);
-            mIsRefreshing = false;
+            getInstrument().reset(getTargetView(),mResetTime);
         }
     }
 
@@ -106,10 +113,11 @@ public class RefreshLayout extends SlidingLayout implements SlidingLayout.Slidin
         switch (event.getAction()){
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
+                //如果终止动作时，滑动距离大于预设距离就刷新，否则交给slidinglayout做处理
                 if(getInstrument().getTranslationY(getTargetView()) >= mRefreshDistance) {
                     //刷新
                     if(mOnRefreshListener != null){
-                        doRefresh();
+                        setRefreshing(true);
                         return true;
                     }
                 }
@@ -118,8 +126,20 @@ public class RefreshLayout extends SlidingLayout implements SlidingLayout.Slidin
         }
     }
 
+    /**
+     * 获取刷新距离
+     * @return
+     */
     public int getRefreshDistance(){
         return this.mRefreshDistance;
+    }
+
+    /**
+     * 设置刷新距离，此值会影响刷新触发的距离和刷新恢复的距离，但不影响最大刷新距离
+     * @param refreshDistance
+     */
+    public void setRefreshDistance(int refreshDistance){
+        this.mRefreshDistance = refreshDistance;
     }
 
     @Override

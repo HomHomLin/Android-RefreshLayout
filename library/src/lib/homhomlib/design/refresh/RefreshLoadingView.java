@@ -32,6 +32,7 @@ public class RefreshLoadingView extends ImageView {
     public void stop(){
         if(mAnimation != null){
             mAnimation.stop();
+            mAnimation.selectDrawable(0);
         }
     }
 

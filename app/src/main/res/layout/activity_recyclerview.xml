@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<lib.homhomlib.design.refresh.DefaultRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<lib.homhomlin.demo.MonoRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slidingLayout"
     android:layout_width="match_parent"
@@ -11,4 +11,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
-</lib.homhomlib.design.refresh.DefaultRefreshLayout>
+</lib.homhomlin.demo.MonoRefreshLayout>

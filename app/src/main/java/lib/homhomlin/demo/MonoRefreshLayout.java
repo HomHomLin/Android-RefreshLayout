@@ -1,14 +1,18 @@
-package lib.homhomlib.design.refresh;
+package lib.homhomlin.demo;
+
+/**
+ * Created by Linhh on 16/5/30.
+ */
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-/**
- * Created by Linhh on 16/5/25.
- */
-public class DefaultRefreshLayout extends RefreshLayout implements RefreshLayout.OnRefreshListener{
+import lib.homhomlib.design.refresh.RefreshLayout;
+import lib.homhomlib.design.refresh.RefreshLoadingView;
+
+public class MonoRefreshLayout extends RefreshLayout implements RefreshLayout.OnRefreshListener{
 
     private RefreshLoadingView mViewRefreshIcon;
 
@@ -18,25 +22,25 @@ public class DefaultRefreshLayout extends RefreshLayout implements RefreshLayout
 
     private OnRefreshListener mOnRefreshListener;
 
-    public DefaultRefreshLayout(Context context) {
+    public MonoRefreshLayout(Context context) {
         this(context,null);
     }
 
-    public DefaultRefreshLayout(Context context, AttributeSet attrs) {
+    public MonoRefreshLayout(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public DefaultRefreshLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MonoRefreshLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init(){
-        mViewRefreshBg = View.inflate(getContext(), R.layout.refresh_bg, null);
+        mViewRefreshBg = View.inflate(getContext(), R.layout.mono_bg, null);
         mViewRefreshIcon = (RefreshLoadingView)mViewRefreshBg.findViewById(R.id.icon);
         mTextView = (TextView)mViewRefreshBg.findViewById(R.id.alert);
         //设置最大下拉位置
-//        setSlidingDistance(getRefreshDistance());
+        setSlidingDistance(getRefreshDistance());
         setBackgroundView(mViewRefreshBg);
         super.setOnRefreshListener(this);
     }
@@ -76,3 +80,4 @@ public class DefaultRefreshLayout extends RefreshLayout implements RefreshLayout
         }
     }
 }
+

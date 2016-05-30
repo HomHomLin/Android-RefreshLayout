@@ -14,7 +14,7 @@ import lib.homhomlib.design.refresh.RefreshLayout;
  * Created by Linhh on 16/4/18.
  */
 public class RecyclerViewActivity extends AppCompatActivity {
-    private DefaultRefreshLayout mRefreshLayout;
+    private MonoRefreshLayout mRefreshLayout;
     private final static String TAG = "ListViewActivity";
     private int mCount = 5;
     private Adapter mAdapter;
@@ -23,7 +23,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
-        mRefreshLayout = (DefaultRefreshLayout) findViewById(R.id.slidingLayout);
+        mRefreshLayout = (MonoRefreshLayout) findViewById(R.id.slidingLayout);
 //        View front = View.inflate(this,R.layout.view_front,null);
         RecyclerView listView = (RecyclerView) this.findViewById(R.id.recycler_view);
         listView.setLayoutManager(new LinearLayoutManager(this));

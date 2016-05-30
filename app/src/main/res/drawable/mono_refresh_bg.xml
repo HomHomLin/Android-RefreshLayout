@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/mono_black_20"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_01"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_02"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_03"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_04"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_05"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_06"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_07"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_08"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_09"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_10"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_11"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_12"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_13"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_14"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_15"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_16"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_17"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_18"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_19"
+        android:duration="50" />
+    <item
+        android:drawable="@drawable/mono_black_20"
+        android:duration="50" />
+</animation-list>
